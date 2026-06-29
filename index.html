@@ -7,7 +7,11 @@
   <meta name="description" content="A curated showcase of AI solutions built on Microsoft Foundry — fraud detection, document intelligence, voice AI, FinTech and MLOps." />
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&display=swap" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link id="sketchCss" rel="stylesheet" href="assets/css/sketch.css" />
+  <script>try{if(localStorage.getItem('aihub-sketch')!=='on'){document.getElementById('sketchCss').disabled=true;}}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -23,6 +27,10 @@
       <nav class="header-nav">
         <a href="#engage" class="header-link">Get involved</a>
         <a href="https://github.com/KasamShaikh" target="_blank" rel="noopener" class="header-link">GitHub</a>
+        <button id="sketchToggle" class="sketch-toggle" type="button" aria-pressed="false" title="Toggle the Sketchboard whiteboard theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path></svg>
+          Sketchboard
+        </button>
         <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
           <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -33,6 +41,15 @@
 
   <main id="main">
     <a id="top"></a>
+    <!-- About banner (infographic) -->
+    <section class="about-banner" aria-label="About Kasam Shaikh">
+      <div class="container">
+        <figure class="about-figure">
+          <img src="assets/img/kasam-infographic.png" alt="Kasam Shaikh — Enterprise Cloud & AI Apps Solution Engineer at Microsoft: a sketchnote covering recognition, focus areas, who he works with, community and values." onerror="this.closest('.about-figure').classList.add('is-missing')" />
+          <figcaption class="about-missing">Save your infographic image as <code>assets/img/kasam-infographic.png</code> to display it here.</figcaption>
+        </figure>
+      </div>
+    </section>
     <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
@@ -57,6 +74,7 @@
     <!-- Controls -->
     <section class="controls">
       <div class="container controls-inner">
+        <h2 class="grid-heading">The Solutions</h2>
         <div class="search-box">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input id="searchInput" type="search" placeholder="Search solutions, tech or domain…" aria-label="Search solutions" />
@@ -173,7 +191,11 @@
       </div>
       <div class="footer-meta">
         <p class="footer-stats" id="footerStats" hidden>
-          <span class="footer-stat"><strong id="statViews">—</strong> page views</span>
+          <span class="footer-stat"><strong id="statViews">—</strong> total views</span>
+          <span class="footer-dot" aria-hidden="true">·</span>
+          <span class="footer-stat"><strong id="statSketch">—</strong> in Sketchboard</span>
+          <span class="footer-dot" aria-hidden="true">·</span>
+          <span class="footer-stat"><strong id="statStandard">—</strong> in standard</span>
           <span class="footer-dot" aria-hidden="true">·</span>
           <span class="footer-stat"><strong id="statClicks">—</strong> card clicks</span>
         </p>

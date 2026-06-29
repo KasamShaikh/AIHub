@@ -1,0 +1,209 @@
+/* ============================================================
+   SKETCHBOARD THEME (toggleable)
+   Loaded as a separate stylesheet so it can be switched on/off
+   by the "Sketchboard" toggle. When disabled, index.html falls
+   back to the minimal base theme in styles.css.
+   ============================================================ */
+
+/* Sketch-only elements are hidden by default in styles.css.
+   Reveal them only while the Sketchboard theme is active. */
+.about-banner { display: block; }
+
+/* Sketchboard toggle — hand-drawn pill */
+.sketch-toggle {
+  font-family: var(--font-hand);
+  border: 2.5px solid var(--ink-line);
+  border-radius: 14px 18px 13px 17px;
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 20%, transparent);
+}
+.sketch-toggle[aria-pressed="true"] { background: var(--mk-fraud); border-color: var(--ink-line); color: #fff; }
+.sketch-toggle:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 color-mix(in srgb, var(--ink-line) 30%, transparent); }
+
+:root {
+  --font-display: "Caveat", "Segoe UI", cursive;
+  --font-hand: "Patrick Hand", "Comic Sans MS", system-ui, cursive;
+  --ink-line: #1a2b49;
+  --paper: #fffdf7;
+  --hl: #ffe27a;                 /* highlighter yellow */
+  --mk-fraud: #ff6a2b;
+  --mk-fintech: #12b3a6;
+  --mk-ops: #2870ea;
+  --mk-doc: #8b5cf6;
+  --mk-voice: #e84fa8;
+  --mk-mlops: #1faa6a;
+}
+[data-theme="dark"] {
+  --ink-line: #f1e7d3;
+  --paper: #0e131c;
+  --hl: #6b5a18;
+}
+
+/* Whiteboard backdrop: warm paper + faint dot grid */
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink-line) 14%, transparent) 1.3px, transparent 1.3px);
+  background-size: 24px 24px;
+}
+
+/* ---- Display + hand typography ---- */
+.brand-text, .hero-title, .section-title, .grid-heading, .card-title,
+#modalTitle, .help-aside h3, .engage-steps h3, .footer-title, .hero-stat dt,
+.step-num, .empty-state {
+  font-family: var(--font-display);
+  letter-spacing: 0;
+}
+.header-link, .eyebrow, .domain-badge, .tech-chip, .chip, .tab, .btn,
+.hero-stat dd, .footer-tag, .modal-section h3, .help-form label,
+.help-links a, .search-box input {
+  font-family: var(--font-hand);
+}
+
+/* ---- Header ---- */
+.site-header { background: color-mix(in srgb, var(--paper) 90%, transparent); border-bottom: 2.5px dashed var(--ink-line); }
+.brand-text { font-size: 1.55rem; }
+.brand-mark { border: 2px solid var(--ink-line); border-radius: 11px 14px 9px 13px; }
+.header-link { font-size: 1.02rem; }
+.theme-toggle { border: 2.5px solid var(--ink-line); border-radius: 11px 14px 10px 13px; box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 22%, transparent); }
+.theme-toggle:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 color-mix(in srgb, var(--ink-line) 30%, transparent); }
+
+/* ---- About banner (infographic, taped to the whiteboard) ---- */
+.about-banner { padding: 26px 0 4px; }
+.about-figure {
+  position: relative; margin: 0 auto; padding: 10px; max-width: 720px;
+  background: var(--paper); border: 3px solid var(--ink-line);
+  border-radius: 18px 26px 20px 24px;
+  box-shadow: 6px 8px 0 color-mix(in srgb, var(--ink-line) 22%, transparent);
+  transform: rotate(-0.4deg);
+}
+.about-figure::before, .about-figure::after {
+  content: ""; position: absolute; top: -13px; width: 92px; height: 26px;
+  background: color-mix(in srgb, var(--hl) 88%, transparent); opacity: 0.82;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ink-line) 25%, transparent);
+}
+.about-figure::before { left: 30px; transform: rotate(-4deg); }
+.about-figure::after { right: 30px; transform: rotate(3deg); }
+.about-figure img { display: block; width: 100%; height: auto; border-radius: 12px 18px 13px 16px; }
+.about-missing { display: none; }
+.about-figure.is-missing { padding: 46px 24px; text-align: center; }
+.about-figure.is-missing img { display: none; }
+.about-figure.is-missing .about-missing { display: block; font-family: var(--font-hand); font-size: 1.08rem; color: var(--ink-soft); }
+.about-missing code { font-family: ui-monospace, "Cascadia Code", monospace; background: var(--hl); color: var(--ink); padding: 2px 7px; border-radius: 6px; }
+
+/* ---- Hero ---- */
+.hero-title { font-weight: 700; font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.02; }
+.grad-text { position: relative; background: none; -webkit-background-clip: border-box; background-clip: border-box; color: var(--mk-fraud); -webkit-text-fill-color: var(--mk-fraud); }
+.grad-text::after { content: ""; position: absolute; left: -4px; right: -4px; bottom: 8%; height: 34%; z-index: -1; background: color-mix(in srgb, var(--mk-fintech) 45%, transparent); border-radius: 8px; transform: rotate(-1.4deg); }
+.eyebrow { border: 2.5px solid var(--ink-line); border-radius: 14px 9px 14px 9px; background: var(--hl); color: var(--ink); box-shadow: 2px 2px 0 var(--ink-line); transform: rotate(-1.5deg); font-size: 0.92rem; }
+.hero-inner { position: relative; }
+.hero-inner::after {
+  content: ""; position: absolute; top: 6px; right: 4%; width: 40px; height: 40px; opacity: 0.85; transform: rotate(10deg);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z' fill='%23ff6a2b'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.hero-stats { border-top: 2.5px dashed var(--ink-line); }
+.hero-stat dt { font-weight: 700; font-size: clamp(2.6rem, 4vw, 3.7rem); }
+.hero-stat:nth-child(1) dt { color: var(--mk-fraud); }
+.hero-stat:nth-child(2) dt { color: var(--mk-ops); }
+.hero-stat:nth-child(3) dt { color: var(--mk-mlops); }
+.hero-stat dd { font-size: 0.92rem; }
+
+/* ---- Section titles (marker underline) ---- */
+.section-title, .grid-heading { display: inline-block; position: relative; font-weight: 700; color: var(--ink); }
+.section-title { font-size: clamp(2.2rem, 4vw, 3rem); }
+.grid-heading { font-size: clamp(2rem, 4vw, 2.7rem); margin: 0; }
+.section-title::after, .grid-heading::after { content: ""; display: block; height: 7px; margin-top: 2px; border-radius: 8px; background: var(--mk-fraud); transform: rotate(-0.8deg); width: 90px; }
+.grid-heading::after { width: 110px; background: var(--mk-ops); }
+
+/* ---- Search + filter chips ---- */
+.search-box { border: 2.5px solid var(--ink-line); border-radius: 16px 22px 15px 20px; box-shadow: 3px 3px 0 color-mix(in srgb, var(--ink-line) 18%, transparent); }
+.search-box:focus-within { box-shadow: 4px 4px 0 color-mix(in srgb, var(--mk-ops) 50%, transparent); }
+.search-box input { font-size: 1.02rem; }
+.chip { border: 2.5px solid var(--ink-line); border-radius: 14px 18px 13px 17px; background: var(--paper); color: var(--ink); box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 16%, transparent); font-size: 0.96rem; }
+.chip:hover { transform: translate(-1px, -1px); color: var(--ink); border-color: var(--ink-line); box-shadow: 3px 3px 0 color-mix(in srgb, var(--mk-ops) 40%, transparent); }
+.chip[aria-pressed="true"] { background: var(--mk-ops); border-color: var(--ink-line); color: #fff; }
+
+/* ---- Cards (one marker colour per domain) ---- */
+.card:has(.banner-fraud)   { --mk: var(--mk-fraud); }
+.card:has(.banner-fintech) { --mk: var(--mk-fintech); }
+.card:has(.banner-ops)     { --mk: var(--mk-ops); }
+.card:has(.banner-doc)     { --mk: var(--mk-doc); }
+.card:has(.banner-voice)   { --mk: var(--mk-voice); }
+.card:has(.banner-mlops)   { --mk: var(--mk-mlops); }
+.card {
+  border: 2.5px solid var(--mk, var(--ink-line));
+  border-radius: 18px 26px 20px 24px;
+  box-shadow: 4px 5px 0 color-mix(in srgb, var(--mk, var(--ink-line)) 32%, transparent);
+}
+.card::before { background: var(--mk, var(--ink-line)); height: 5px; }
+.card:hover, .card:focus-visible {
+  transform: translate(-2px, -3px);
+  border-color: var(--mk, var(--ink-line));
+  box-shadow: 7px 9px 0 color-mix(in srgb, var(--mk, var(--ink-line)) 45%, transparent);
+}
+.card-icon { border: 2px solid var(--ink-line); border-radius: 13px 16px 12px 15px; box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 30%, transparent); background: var(--mk, var(--ink-line)); }
+.card-icon.banner-fraud { background: var(--mk-fraud); }
+.card-icon.banner-fintech { background: var(--mk-fintech); }
+.card-icon.banner-ops { background: var(--mk-ops); }
+.card-icon.banner-doc { background: var(--mk-doc); }
+.card-icon.banner-voice { background: var(--mk-voice); }
+.card-icon.banner-mlops { background: var(--mk-mlops); }
+.card-title { font-size: 1.6rem; line-height: 1.05; }
+.domain-badge { border: 2px solid var(--ink-line); border-radius: 11px 7px 11px 7px; background: var(--paper); color: var(--ink); }
+.tech-chip { border: 2px solid var(--ink-line); border-radius: 10px 6px 11px 7px; background: var(--paper); color: var(--ink); box-shadow: 1.5px 1.5px 0 color-mix(in srgb, var(--ink-line) 16%, transparent); font-size: 0.82rem; }
+.tech-chip.more { background: var(--hl); }
+
+/* ---- Buttons (marker pills with hard shadow) ---- */
+.btn { border: 2.5px solid var(--ink-line); border-radius: 14px 20px 13px 18px; box-shadow: 3px 3px 0 var(--ink-line); font-size: 1.04rem; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+.btn-lg { font-size: 1.12rem; border-radius: 16px 22px 15px 20px; }
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 5px 0 var(--ink-line); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink-line); }
+.btn-primary { background: var(--mk-fraud); color: #fff; }
+.btn-primary:hover { background: var(--mk-fraud); }
+.btn-ghost { background: var(--paper); color: var(--ink); }
+.btn-ghost:hover { color: var(--ink); border-color: var(--ink-line); }
+
+/* ---- Tabs ---- */
+.tabs { border: 2.5px solid var(--ink-line); background: var(--paper); box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 18%, transparent); }
+.tab { font-size: 1.02rem; }
+.tab[aria-selected="true"] { background: var(--mk-ops); color: #fff; box-shadow: none; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"]:hover { color: #fff; }
+
+/* ---- Engage steps (rotating marker colours) ---- */
+.engage-steps li { border: 2.5px solid var(--ink-line); border-radius: 16px 24px 18px 22px; box-shadow: 3px 4px 0 color-mix(in srgb, var(--ink-line) 20%, transparent); }
+.engage-steps li:nth-child(5n + 1) { --mk: var(--mk-fraud); }
+.engage-steps li:nth-child(5n + 2) { --mk: var(--mk-ops); }
+.engage-steps li:nth-child(5n + 3) { --mk: var(--mk-mlops); }
+.engage-steps li:nth-child(5n + 4) { --mk: var(--mk-doc); }
+.engage-steps li:nth-child(5n + 5) { --mk: var(--mk-voice); }
+.engage-steps h3 { font-size: 1.25rem; }
+.step-num { background: var(--mk, var(--ink-line)); border: 2px solid var(--ink-line); border-radius: 9px 12px 8px 11px; box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 25%, transparent); font-size: 1.1rem; }
+
+/* ---- Help card / form ---- */
+.help-card { border: 2.5px solid var(--ink-line); border-radius: 22px 28px 22px 26px; box-shadow: 5px 6px 0 color-mix(in srgb, var(--ink-line) 24%, transparent); }
+.help-aside { border-right: 2.5px dashed var(--ink-line); }
+.help-aside h3 { font-size: 1.7rem; }
+.help-badge { background: var(--mk-doc); border: 2px solid var(--ink-line); border-radius: 13px 16px 12px 15px; box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 25%, transparent); }
+.help-links a { border: 2px solid var(--ink-line); border-radius: 10px 13px 9px 12px; box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 16%, transparent); }
+.help-links a:hover { transform: translate(-1px, -1px); color: var(--ink); border-color: var(--ink-line); }
+.help-form input, .help-form textarea { border: 2.5px solid var(--ink-line); border-radius: 11px 15px 10px 14px; background: var(--paper); }
+.help-form input:focus, .help-form textarea:focus { border-color: var(--mk-ops); background: var(--paper); box-shadow: 3px 3px 0 color-mix(in srgb, var(--mk-ops) 30%, transparent); }
+
+/* ---- Modal ---- */
+.modal-panel { border: 3px solid var(--ink-line); border-radius: 22px 28px 22px 26px; box-shadow: 7px 9px 0 color-mix(in srgb, var(--ink-line) 30%, transparent); }
+.modal-close { border: 2.5px solid var(--ink-line); border-radius: 11px 14px 10px 13px; box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink-line) 22%, transparent); }
+#modalTitle { font-size: 2.5rem; font-weight: 700; }
+.roi-list li::before { background: var(--mk-mlops); }
+
+/* ---- Footer ---- */
+.site-footer { border-top: 2.5px dashed var(--ink-line); background: var(--paper); }
+.footer-mark { border: 2px solid var(--ink-line); border-radius: 11px 14px 10px 13px; }
+.footer-title { font-size: 1.55rem; }
+.footer-credit a { color: var(--mk-fraud); }
+
+/* ---- Responsive sketch fixes ---- */
+@media (max-width: 760px) {
+  .help-aside { border-right: 0; border-bottom: 2.5px dashed var(--ink-line); }
+}
+@media (max-width: 600px) {
+  .hero-inner::after { display: none; }
+}

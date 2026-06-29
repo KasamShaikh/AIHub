@@ -39,6 +39,8 @@
     footerYear: document.getElementById("footerYear"),
     footerStats: document.getElementById("footerStats"),
     statViews: document.getElementById("statViews"),
+    statSketch: document.getElementById("statSketch"),
+    statStandard: document.getElementById("statStandard"),
     statClicks: document.getElementById("statClicks"),
     modal: document.getElementById("modal"),
     modalContent: document.getElementById("modalContent"),
@@ -236,6 +238,25 @@
     localStorage.setItem("acc-theme", next);
   }
 
+  // ---------- sketchboard theme toggle ----------
+  // Enables/disables the separate sketch.css stylesheet. Off => minimal base theme.
+  function initSketchToggle() {
+    const link = document.getElementById("sketchCss");
+    const btn = document.getElementById("sketchToggle");
+    if (!link || !btn) return;
+    const apply = (on) => {
+      link.disabled = !on;
+      btn.setAttribute("aria-pressed", String(on));
+    };
+    let on = localStorage.getItem("aihub-sketch") === "on"; // default OFF (minimal)
+    apply(on);
+    btn.addEventListener("click", () => {
+      on = !on;
+      localStorage.setItem("aihub-sketch", on ? "on" : "off");
+      apply(on);
+    });
+  }
+
   // ---------- analytics (zero-setup global counter) ----------
   // Uses a free, no-account hit counter (Abacus). Works out of the box; best-effort only.
   async function hitCounter(key) {
@@ -264,19 +285,41 @@
   async function loadFooterStats() {
     if (!els.footerStats) return;
     let views = null;
-    let clicks = null;
     try {
-      views = await hitCounter("pageviews"); // +1 per page load
+      views = await hitCounter("pageviews"); // +1 per page load (total)
     } catch (_) {
       return; // counter unavailable — keep the stats line hidden
+    }
+
+    // Count this view against the active theme (Sketchboard vs standard).
+    const sketchOn = !(document.getElementById("sketchCss") || {}).disabled;
+    const hitKey = sketchOn ? "views_sketch" : "views_standard";
+    const otherKey = sketchOn ? "views_standard" : "views_sketch";
+    let mine = null;
+    let other = null;
+    let clicks = null;
+    try {
+      mine = await hitCounter(hitKey); // +1 for the active mode
+    } catch (_) {
+      /* ignore */
+    }
+    try {
+      other = await getCounter(otherKey); // current total, no increment
+    } catch (_) {
+      /* ignore */
     }
     try {
       clicks = await getCounter("cardclicks"); // current total, no increment
     } catch (_) {
       /* ignore */
     }
+    const sketchViews = sketchOn ? mine : other;
+    const standardViews = sketchOn ? other : mine;
+
     els.statViews.textContent = Number(views).toLocaleString();
-    els.statClicks.textContent = Number(clicks ?? 0).toLocaleString();
+    if (els.statSketch) els.statSketch.textContent = Number(sketchViews ?? 0).toLocaleString();
+    if (els.statStandard) els.statStandard.textContent = Number(standardViews ?? 0).toLocaleString();
+    if (els.statClicks) els.statClicks.textContent = Number(clicks ?? 0).toLocaleString();
     els.footerStats.hidden = false;
   }
 
@@ -405,6 +448,7 @@
     });
 
     els.themeToggle.addEventListener("click", toggleTheme);
+    initSketchToggle();
 
     wireTabs();
     const helpForm = document.getElementById("helpForm");

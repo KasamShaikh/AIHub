@@ -327,6 +327,22 @@ a { color: var(--azure-dark); }
   .form-row { grid-template-columns: 1fr; }
 }
 
+/* Sketch-only elements (added for the Sketchboard theme) — hidden unless
+   sketch.css is active. The Sketchboard toggle enables/disables sketch.css. */
+.about-banner, .grid-heading { display: none; }
+
+/* Sketchboard toggle button — base styling (sketch.css restyles it hand-drawn) */
+.sketch-toggle {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 12px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+  font-weight: 700; font-size: 0.85rem; cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.12s, box-shadow 0.12s;
+}
+.sketch-toggle:hover { border-color: var(--azure); color: var(--azure); }
+.sketch-toggle[aria-pressed="true"] { background: var(--azure); border-color: var(--azure); color: #fff; }
+.sketch-toggle svg { width: 15px; height: 15px; }
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
