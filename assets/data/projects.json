@@ -1,0 +1,160 @@
+[
+  {
+    "id": "docuguard",
+    "name": "DocuGuard – AI TamperLens",
+    "tagline": "Detect document tampering & AI-generated forgery for banking, KYC and claims.",
+    "icon": "shield",
+    "accent": "fraud",
+    "domain": "Fraud Detection & Document Security",
+    "description": "An AI-powered forensics platform that inspects PDFs and images to flag tampering and AI-generated forgery. It combines document-native forensics, pixel-level checks, OCR, and optional multimodal LLM reasoning — running entirely on CPU with no GPU dependency, making it cost-efficient to deploy at scale.",
+    "techStack": [
+      "FastAPI",
+      "React + TypeScript",
+      "Azure Document Intelligence",
+      "PyMuPDF",
+      "OpenCV",
+      "Tesseract OCR",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "roi": [
+      "Cuts manual document review time for KYC and claims onboarding",
+      "Reduces fraud losses by catching tampered and synthetic documents early",
+      "CPU-only design avoids GPU infrastructure cost",
+      "Reusable across banking, insurance and lending workflows"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/DocuGuard-AI-TamperLens",
+    "demoUrl": "https://docuguard.orangecoast-385f1b19.centralindia.azurecontainerapps.io/"
+  },
+  {
+    "id": "fd-rates-foundry",
+    "name": "FD Rates with Foundry",
+    "tagline": "Enterprise Fixed-Deposit rate aggregator powered by Azure AI Foundry agents.",
+    "icon": "trending",
+    "accent": "fintech",
+    "domain": "FinTech & Production SaaS",
+    "description": "A production-grade aggregator that collects Fixed Deposit rates from Indian banks using Azure AI Foundry agents with custom function tools (fetch webpage, PDF and image). It supports parallel scraping, HTTP caching, robots.txt compliance and multiple deployment topologies from App Service to AKS — built for high availability and cost optimization.",
+    "techStack": [
+      "Azure AI Foundry (gpt-4.1)",
+      "Flask",
+      "React + TypeScript",
+      "Playwright",
+      "Azure Document Intelligence",
+      "Azure Blob Storage",
+      "AKS / App Service",
+      "Bicep"
+    ],
+    "roi": [
+      "Replaces manual rate collection across dozens of bank sites",
+      "Always-current data for comparison and customer advisory",
+      "Multi-region HA with one-click Deploy to Azure",
+      "Caching and parallelism reduce compute and run cost"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/fd-rates-with-foundary",
+    "demoUrl": "https://brave-glacier-0ae22b600.7.azurestaticapps.net/"
+  },
+  {
+    "id": "email-agentic",
+    "name": "Agentic Email Processing",
+    "tagline": "Hands-free email intake with agents for contract extraction & verification.",
+    "icon": "mail",
+    "accent": "ops",
+    "domain": "Financial Operations & Document Processing",
+    "description": "An event-driven, multi-agent system that ingests email via Logic Apps and orchestrates AI agents for contract data extraction, form verification and security checks. Infrastructure is provisioned as code with Bicep across Azure AI Foundry, Storage and Document Intelligence, with a Flask dashboard for visibility.",
+    "techStack": [
+      "Azure AI Foundry Agents",
+      "Azure Logic Apps",
+      "Azure Document Intelligence",
+      "Azure OpenAI (gpt-5 mini)",
+      "Azure Storage",
+      "Bicep (IaC)",
+      "Flask"
+    ],
+    "roi": [
+      "Automates inbox-to-data intake with no manual handling",
+      "Reduces review effort for contracts and onboarding forms",
+      "Event-driven design scales with volume on demand",
+      "IaC makes the solution repeatable across environments"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/agentic-email-processing",
+    "demoUrl": "https://agentic-email-processing.azurewebsites.net/"
+  },
+  {
+    "id": "ocr-accuracy",
+    "name": "OCR Accuracy Lab",
+    "tagline": "Side-by-side OCR benchmark: Azure Document Intelligence vs GPT models.",
+    "icon": "scan",
+    "accent": "doc",
+    "domain": "Document Intelligence & Benchmarking",
+    "description": "An interactive benchmarking app that runs the same document through Azure Document Intelligence and multiple GPT models, then scores results with an LLM-as-judge. It surfaces accuracy metrics and visual diffs so teams can make a transparent, data-driven choice of OCR provider.",
+    "techStack": [
+      "Streamlit",
+      "Azure Document Intelligence",
+      "Azure OpenAI (GPT-5 / GPT-4 family)",
+      "pandas",
+      "plotly",
+      "OpenCV",
+      "PyMuPDF"
+    ],
+    "roi": [
+      "Removes guesswork from OCR vendor and model selection",
+      "Quantifies accuracy before committing to production",
+      "Builds customer trust with transparent, judged comparisons",
+      "Reusable harness for any new document type"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/pixelledger",
+    "demoUrl": "https://pixelledger.delightfulground-2b4a66d9.centralindia.azurecontainerapps.io/"
+  },
+  {
+    "id": "voicerag",
+    "name": "VoiceRAG",
+    "tagline": "Low-latency inbound voice bot grounded with Azure AI Search RAG.",
+    "icon": "mic",
+    "accent": "voice",
+    "domain": "Voice AI & Conversational Search",
+    "description": "A real-time inbound voice bot that compares two processing paths — Azure Voice Live versus a composed Speech SDK pipeline — while grounding answers with Retrieval Augmented Generation over Azure AI Search. Redis semantic caching and a live latency dashboard demonstrate enterprise-grade responsiveness.",
+    "techStack": [
+      "FastAPI",
+      "Azure Voice Live + Speech SDK",
+      "Azure AI Search (hybrid + semantic)",
+      "Azure OpenAI",
+      "Redis (semantic cache)",
+      "Bicep",
+      "Azure Container Apps"
+    ],
+    "roi": [
+      "Delivers low-latency, natural voice interactions",
+      "Grounded answers reduce hallucination and support cost",
+      "Semantic caching cuts repeated model calls and spend",
+      "Dual-path design de-risks the voice architecture choice"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/VoiceRAG-Demo",
+    "demoUrl": "https://ca-bridge-voicebot-liveks.agreeablefield-24fa55ce.swedencentral.azurecontainerapps.io/web/index.html"
+  },
+  {
+    "id": "aoai-prompt-port",
+    "name": "AOAI Prompt Port",
+    "tagline": "Migrate & optimize Azure OpenAI prompts across GPT deployments safely.",
+    "icon": "wand",
+    "accent": "mlops",
+    "domain": "MLOps & Prompt Engineering",
+    "description": "A Gradio UI that migrates and optimizes Azure OpenAI prompts between GPT deployments. It streams progress and returns a ship / no-ship decision with scoring and diffs, so teams can move to newer models with confidence and an audit trail of quality.",
+    "techStack": [
+      "Gradio",
+      "Azure OpenAI",
+      "Azure Identity",
+      "Python",
+      "Docker",
+      "Azure Container Apps"
+    ],
+    "roi": [
+      "De-risks model upgrades with automated evaluation",
+      "Ship / no-ship scoring prevents quality regressions",
+      "Speeds prompt migration that is otherwise manual",
+      "Reusable across any Azure OpenAI deployment pair"
+    ],
+    "repoUrl": null,
+    "demoUrl": "https://aoai-prompt-port.ambitiousriver-423b6763.southindia.azurecontainerapps.io/",
+    "hidden": true
+  }
+]
