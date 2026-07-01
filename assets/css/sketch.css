@@ -82,10 +82,35 @@ body {
 }
 .about-figure::before { left: 30px; transform: rotate(-4deg); }
 .about-figure::after { right: 30px; transform: rotate(3deg); }
-.about-figure img { display: block; width: 100%; height: auto; border-radius: 12px 18px 13px 16px; }
+
+/* Two infographics revolve + focus-in (Ken Burns) crossfade */
+.about-stack {
+  position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden;
+  border-radius: 12px 18px 13px 16px; perspective: 1600px; background: var(--paper);
+}
+.about-slide {
+  position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+  object-fit: cover; border-radius: inherit; transform-origin: center;
+  backface-visibility: hidden; will-change: opacity, transform;
+  animation: aboutRevolve 10s cubic-bezier(0.55, 0.06, 0.4, 0.97) infinite;
+}
+.about-stack:hover .about-slide { animation-play-state: paused; }
+.about-slide:nth-child(2) { animation-delay: -5s; }
+@keyframes aboutRevolve {
+  0%   { opacity: 1; transform: scale(1) rotateY(0deg); }
+  8%   { opacity: 1; transform: scale(1.02) rotateY(0deg); }
+  42%  { opacity: 1; transform: scale(1.06) rotateY(0deg); }
+  50%  { opacity: 0; transform: scale(1.1) rotateY(-16deg); }
+  92%  { opacity: 0; transform: scale(1) rotateY(16deg); }
+  100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-slide { animation: none; }
+  .about-slide:nth-child(2) { display: none; }
+}
 .about-missing { display: none; }
 .about-figure.is-missing { padding: 46px 24px; text-align: center; }
-.about-figure.is-missing img { display: none; }
+.about-figure.is-missing .about-stack { display: none; }
 .about-figure.is-missing .about-missing { display: block; font-family: var(--font-hand); font-size: 1.08rem; color: var(--ink-soft); }
 .about-missing code { font-family: ui-monospace, "Cascadia Code", monospace; background: var(--hl); color: var(--ink); padding: 2px 7px; border-radius: 6px; }
 
