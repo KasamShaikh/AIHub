@@ -132,6 +132,31 @@
     "demoUrl": "https://ca-bridge-voicebot-liveks.agreeablefield-24fa55ce.swedencentral.azurecontainerapps.io/web/index.html"
   },
   {
+    "id": "pii-shield",
+    "name": "PII Shield",
+    "tagline": "Privacy guardrail that detects & anonymizes PII between your apps and LLMs.",
+    "icon": "shield",
+    "accent": "doc",
+    "domain": "Data Privacy & LLM Security",
+    "description": "A drop-in privacy layer that sits between applications and LLMs, detecting and anonymizing personally identifiable information before prompts ever reach the model. It pairs Microsoft Presidio with an ONNX-optimized BERT NER model for fast, accurate entity recognition, then de-identifies (and can re-identify) sensitive data so teams can adopt generative AI without leaking PII.",
+    "techStack": [
+      "Microsoft Presidio",
+      "ONNX Runtime",
+      "BERT NER",
+      "Python",
+      "Docker",
+      "Azure Container Apps"
+    ],
+    "roi": [
+      "Prevents PII leakage into third-party LLM prompts",
+      "Supports compliance with data-protection and privacy rules",
+      "ONNX-optimized NER keeps latency and cost low on CPU",
+      "Reusable guardrail across any app-to-LLM integration"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/pii-shield",
+    "demoUrl": "https://piishield-playground.gentlesky-ed8af330.centralindia.azurecontainerapps.io/"
+  },
+  {
     "id": "aoai-prompt-port",
     "name": "AOAI Prompt Port",
     "tagline": "Migrate & optimize Azure OpenAI prompts across GPT deployments safely.",
