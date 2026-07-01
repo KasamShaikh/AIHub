@@ -150,6 +150,11 @@ body {
 .domain-badge { border: 2px solid var(--ink-line); border-radius: 11px 7px 11px 7px; background: var(--paper); color: var(--ink); }
 .tech-chip { border: 2px solid var(--ink-line); border-radius: 10px 6px 11px 7px; background: var(--paper); color: var(--ink); box-shadow: 1.5px 1.5px 0 color-mix(in srgb, var(--ink-line) 16%, transparent); font-size: 0.82rem; }
 .tech-chip.more { background: var(--hl); }
+.contrib-label { color: var(--ink); font-family: var(--font-hand); letter-spacing: 0.06em; }
+.contrib { border: 2px solid var(--ink-line); border-radius: 999px; background: var(--paper); color: var(--ink); box-shadow: 1.5px 1.5px 0 color-mix(in srgb, var(--ink-line) 16%, transparent); font-family: var(--font-hand); font-size: 0.9rem; }
+.contrib:hover { color: var(--ink); background: var(--hl); }
+.contrib-avatar { border: 2px solid var(--ink-line); }
+.contrib-more { color: var(--ink); font-family: var(--font-hand); }
 
 /* ---- Buttons (marker pills with hard shadow) ---- */
 .btn { border: 2.5px solid var(--ink-line); border-radius: 14px 20px 13px 18px; box-shadow: 3px 3px 0 var(--ink-line); font-size: 1.04rem; transition: transform 0.12s ease, box-shadow 0.12s ease; }

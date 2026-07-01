@@ -62,6 +62,71 @@
       ICONS[key] || ICONS.scan
     }</svg>`;
 
+  // Extract "owner/repo" from a GitHub repo URL (null for non-GitHub or missing URLs).
+  const repoSlug = (url) => {
+    if (!url) return null;
+    const m = String(url).match(
+      /github\.com\/([^/#?\s]+)\/([^/#?\s]+?)(?:\.git)?\/?(?:[#?].*)?$/i
+    );
+    return m ? `${m[1]}/${m[2]}` : null;
+  };
+
+  // In-memory cache of contributors per repo slug (array on success, null on failure/none).
+  const contributorsCache = new Map();
+
+  async function fetchContributors(slug) {
+    if (contributorsCache.has(slug)) return contributorsCache.get(slug);
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/${slug}/contributors?per_page=8`,
+        { headers: { Accept: "application/vnd.github+json" } }
+      );
+      if (!res.ok) throw new Error(`github ${res.status}`);
+      const data = await res.json();
+      const list = Array.isArray(data)
+        ? data
+            .filter((c) => c && c.type === "User" && c.login)
+            .map((c) => ({ login: c.login, url: c.html_url, avatar: c.avatar_url }))
+        : [];
+      contributorsCache.set(slug, list);
+      return list;
+    } catch (_) {
+      contributorsCache.set(slug, null); // best-effort; don't retry this session
+      return null;
+    }
+  }
+
+  function contributorsHtml(list) {
+    const MAX = 3;
+    const shown = list.slice(0, MAX);
+    const rest = list.length - shown.length;
+    const chips = shown
+      .map(
+        (c) =>
+          `<a class="contrib" href="${esc(c.url)}" target="_blank" rel="noopener" title="${esc(
+            c.login
+          )} on GitHub"><img class="contrib-avatar" src="${esc(
+            c.avatar
+          )}&s=48" alt="" width="22" height="22" loading="lazy"><span class="contrib-name">${esc(
+            c.login
+          )}</span></a>`
+      )
+      .join("");
+    const more = rest > 0 ? `<span class="contrib-more">+${rest}</span>` : "";
+    return `<span class="contrib-label">Contributors</span><span class="contrib-row">${chips}${more}</span>`;
+  }
+
+  // Populate the contributors row for each card that references a GitHub repo.
+  function hydrateContributors() {
+    els.grid.querySelectorAll(".card-contributors[data-repo]").forEach((box) => {
+      fetchContributors(box.dataset.repo).then((list) => {
+        if (!box.isConnected || !list || !list.length) return; // keep hidden
+        box.innerHTML = contributorsHtml(list);
+        box.hidden = false;
+      });
+    });
+  }
+
   const matches = (p) => {
     const inDomain = activeDomain === "All" || p.domain === activeDomain;
     if (!inDomain) return false;
@@ -89,6 +154,11 @@
       p.demoUrl ? "btn-ghost" : "btn-primary"
     }" data-id="${esc(p.id)}" type="button">Details</button>`;
 
+    const slug = repoSlug(p.repoUrl);
+    const contribBox = slug
+      ? `<div class="card-contributors" data-repo="${esc(slug)}" hidden></div>`
+      : "";
+
     return `
       <article class="card" tabindex="0" role="button" data-id="${esc(p.id)}" aria-label="View details for ${esc(
       p.name
@@ -101,6 +171,7 @@
           <h2 class="card-title">${esc(p.name)}</h2>
           <p class="card-tagline">${esc(p.tagline)}</p>
           <div class="tech-chips">${chipHtml}</div>
+          ${contribBox}
           <div class="card-actions">
             ${demoBtn}
             ${detailsBtn}
@@ -113,6 +184,7 @@
     const visible = projects.filter(matches);
     els.grid.innerHTML = visible.map(cardHtml).join("");
     els.empty.hidden = visible.length > 0;
+    hydrateContributors();
   }
 
   function buildChips() {

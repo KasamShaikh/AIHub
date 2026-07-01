@@ -188,6 +188,22 @@ a { color: var(--azure-dark); }
   background: var(--surface-2); border: 1px solid var(--line); padding: 3px 9px; border-radius: 7px;
 }
 .tech-chip.more { background: transparent; color: var(--muted); }
+
+/* Contributors (pulled live from the GitHub repo) */
+.card-contributors { display: flex; flex-direction: column; gap: 7px; margin-top: 2px; }
+.contrib-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.contrib-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.contrib {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 3px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--surface-2);
+  color: var(--ink-soft); font-size: 0.78rem; font-weight: 600; text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.contrib:hover { border-color: var(--azure); color: var(--azure); }
+.contrib-avatar { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; background: var(--surface); flex: none; }
+.contrib-name { line-height: 1; }
+.contrib-more { font-size: 0.76rem; font-weight: 700; color: var(--muted); }
+
 .card-actions { display: flex; gap: 10px; margin-top: auto; padding-top: 8px; }
 
 /* Buttons */
