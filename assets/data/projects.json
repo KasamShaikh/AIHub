@@ -157,6 +157,56 @@
     "demoUrl": "https://piishield-playground.gentlesky-ed8af330.centralindia.azurecontainerapps.io/"
   },
   {
+    "id": "cheque-verify",
+    "name": "Cheque Verification Prototype",
+    "tagline": "AI cheque verification: OCR field extraction plus signature match with a live call trace.",
+    "icon": "shield",
+    "accent": "fraud",
+    "domain": "Banking & Cheque Verification",
+    "description": "A .NET Blazor prototype that verifies bank cheques end to end. Azure Document Intelligence reads the cheque, GPT-4o vision structures the fields and compares the drawn signature against the account's registered specimen, and deterministic C# rules apply the funds and match thresholds for a final verdict. A per-call trace panel surfaces every OCR and LLM step with token counts and latency.",
+    "techStack": [
+      ".NET 8 / Blazor Server",
+      "Azure Document Intelligence",
+      "Azure OpenAI (gpt-4o vision)",
+      "SkiaSharp",
+      "Managed Identity + RBAC",
+      "Azure App Service"
+    ],
+    "roi": [
+      "Automates cheque field capture and signature checks",
+      "Catches forged signatures and mismatched account details early",
+      "Keyless managed-identity design avoids stored secrets",
+      "Parallel LLM calls keep verification fast and low cost"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/cheque-verification",
+    "demoUrl": "https://cheque-verification.azurewebsites.net/"
+  },
+  {
+    "id": "cheque-verify-foundry",
+    "name": "Cheque Verification \u2013 Foundry Agents",
+    "tagline": "The same cheque check, re-imagined as an autonomous Azure AI Foundry agent.",
+    "icon": "wand",
+    "accent": "ops",
+    "domain": "Banking & Cheque Verification",
+    "description": "The agentic edition of the cheque prototype. A GPT-4o agent on Azure AI Foundry is handed the cheque image plus lookup_account and check_funds function tools, then orchestrates the account lookup, funds check and signature comparison on its own \u2014 while the final 85/60 verdict stays deterministic in C#. It shows the same problem solved with tool-calling agents versus a hand-coded pipeline.",
+    "techStack": [
+      "Azure AI Foundry (gpt-4o)",
+      "Agent function tools",
+      ".NET 8 / Blazor Server",
+      "Azure Document Intelligence",
+      "Managed Identity + RBAC",
+      "Azure App Service"
+    ],
+    "roi": [
+      "Shows an autonomous agent orchestrating a real workflow",
+      "Keeps critical verdict logic deterministic and auditable",
+      "Reuses one backend for both direct-SDK and agent paths",
+      "Data-resident gpt-4o keeps processing in-region"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/cheque-verification",
+    "demoUrl": "https://cheque-verification.azurewebsites.net/foundry-agents"
+  },
+  {
     "id": "aoai-prompt-port",
     "name": "AOAI Prompt Port",
     "tagline": "Migrate & optimize Azure OpenAI prompts across GPT deployments safely.",
