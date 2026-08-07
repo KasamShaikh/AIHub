@@ -207,6 +207,31 @@
     "demoUrl": "https://cheque-verification.azurewebsites.net/foundry-agents"
   },
   {
+    "id": "customer-mail-agent",
+    "name": "Customer Mail Agent",
+    "tagline": "Human-in-the-loop email agent that drafts grounded replies and logs every step.",
+    "icon": "mail",
+    "accent": "voice",
+    "domain": "Customer Support & Email Automation",
+    "description": "An agentic email assistant that reads inbound customer mail, detects intent and retrieves grounded answers from a closed FAQ corpus using an Azure AI Foundry IQ knowledge source over Blob Storage. It drafts a reply for a human to approve, edit or regenerate before sending, and records every step \u2014 received, intent, retrieval, draft, revision, approval and send \u2014 across dedicated storage containers for a full audit trail.",
+    "techStack": [
+      "Azure AI Foundry Agents (gpt-4o)",
+      "Foundry IQ + Azure AI Search",
+      "Azure Blob Storage",
+      "Managed Identity + RBAC",
+      "Terraform (IaC)",
+      "Azure App Service"
+    ],
+    "roi": [
+      "Automates first-draft replies to common customer queries",
+      "Keeps a human in control of every outgoing message",
+      "Grounded RAG answers cut hallucination and rework",
+      "Per-mail audit trail supports compliance and QA reviews"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/Agentic-Customer-email-Response",
+    "demoUrl": "https://app-mailagent-xjkvjv.azurewebsites.net/"
+  },
+  {
     "id": "aoai-prompt-port",
     "name": "AOAI Prompt Port",
     "tagline": "Migrate & optimize Azure OpenAI prompts across GPT deployments safely.",
