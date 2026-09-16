@@ -232,6 +232,31 @@
     "demoUrl": "https://app-mailagent-xjkvjv.azurewebsites.net/"
   },
   {
+    "id": "mai-transcribe-2",
+    "name": "MAI-Transcribe-2",
+    "tagline": "Fast, multilingual speech-to-text from Microsoft AI \u2014 batch diarization plus three real-time pipelines.",
+    "icon": "mic",
+    "accent": "voice",
+    "domain": "Speech AI & Transcription",
+    "description": "A capability demo for MAI-Transcribe-2, Microsoft AI's fast multilingual speech model. A Batch tab handles one-shot upload or record with full MAI diarization and click-to-seek playback, while a Real time tab offers three live pipelines: MAI near-real-time (~8-second windows for highest accuracy and Hinglish), Standard Azure Speech SDK (instant interim words for live captions), and Hybrid (live captions now, replaced by a cleaner MAI pass on stop). The browser streams 16 kHz PCM16 audio over a WebSocket while the server holds keyless Entra ID credentials, so no token ever reaches the client.",
+    "techStack": [
+      "MAI-Transcribe-2",
+      "Azure Speech SDK",
+      "FastAPI (Python)",
+      "WebSockets + AudioWorklet",
+      "Keyless Entra ID (Managed Identity)",
+      "Azure Container Apps"
+    ],
+    "roi": [
+      "Accurate multilingual transcription, including Hinglish code-switching",
+      "Three pipelines trade latency versus accuracy for any scenario",
+      "Keyless Entra ID keeps speech credentials off the browser",
+      "Reusable for live captions, dictation and batch diarization"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/mai-transcribe-demo",
+    "demoUrl": "https://ca-maitranscribe.purplebay-4cd4cb88.centralindia.azurecontainerapps.io/how-it-works.html"
+  },
+  {
     "id": "aoai-prompt-port",
     "name": "AOAI Prompt Port",
     "tagline": "Migrate & optimize Azure OpenAI prompts across GPT deployments safely.",
