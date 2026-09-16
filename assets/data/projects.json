@@ -257,6 +257,31 @@
     "demoUrl": "https://ca-maitranscribe.purplebay-4cd4cb88.centralindia.azurecontainerapps.io/how-it-works.html"
   },
   {
+    "id": "cibil-extractor-studio",
+    "name": "CIBIL Extractor Studio",
+    "tagline": "Turn CIBIL credit reports into validated Excel workbooks with maker-checker review.",
+    "icon": "scan",
+    "accent": "doc",
+    "domain": "Credit Risk & Document Intelligence",
+    "description": "A proof of concept that converts a CIBIL Credit Information Report PDF into a structured Full Detail Excel workbook. The maker-checker workflow highlights low-confidence fields for correction, applies deterministic DPD sequencing and account-status rules, reconciles extracted totals against the report, and records an audit trail before the checker approves the final workbook.",
+    "techStack": [
+      "FastAPI (Python)",
+      "Azure Document Intelligence",
+      "Microsoft Foundry (gpt-5.4-mini)",
+      "pypdfium2",
+      "openpyxl",
+      "Azure Container Apps"
+    ],
+    "roi": [
+      "Replaces manual transcription of lengthy CIBIL reports",
+      "Maker-checker review keeps human control over credit data",
+      "Deterministic rules standardize DPD, NPA and SMA classification",
+      "Automated reconciliation catches extraction gaps before approval"
+    ],
+    "repoUrl": "https://github.com/KasamShaikh/cibil-extractor-studio",
+    "demoUrl": "https://cibil-extractor.greenflower-935e7dc1.southindia.azurecontainerapps.io/"
+  },
+  {
     "id": "aoai-prompt-port",
     "name": "AOAI Prompt Port",
     "tagline": "Migrate & optimize Azure OpenAI prompts across GPT deployments safely.",
